@@ -185,4 +185,12 @@ return [
         // 'Example' => App\Facades\Example::class,
     ])->toArray(),
 
+    /*
+    |--------------------------------------------------------------------------
+    | Countries rest API
+    |--------------------------------------------------------------------------
+    |
+    */
+    'restCountriesUrl'      => 'https://restcountries.com/v3.1/all'
+
 ];
