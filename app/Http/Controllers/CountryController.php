@@ -32,50 +32,42 @@ class CountryController extends Controller
     public function fetch() 
     {
        
-        $response = Http::get(Config::get('app.restCountriesUrl'), 
+        //TODO: delete data 
+
+        /*$response = Http::get(Config::get('app.restCountriesUrl'), 
             ['fields' =>  'name,capital,currencies,population,timezones,flags']);
-        $arrCountries = $response->json();
+        $arrCountries = $response->json();*/
+
+        $dummyData = '[{"flags":{"png":"https://flagcdn.com/w320/sk.png","svg":"https://flagcdn.com/sk.svg","alt":"The flag of Slovakia is composed of three equal horizontal bands of white, blue and red. The coat of arms of Slovakia is superimposed at the center of the field slightly towards the hoist side."},"name":{"common":"Slovakia","official":"Slovak Republic","nativeName":{"slk":{"official":"Slovenská republika","common":"Slovensko"}}},"currencies":{"EUR":{"name":"Euro","symbol":"€"}},"capital":["Bratislava"],"population":5458827,"timezones":["UTC+01:00"]}]';
+        $arrCountries = json_decode($dummyData,true);
 
         foreach($arrCountries as $country)
         {
 
             $newCountry = new Country();
 
-            if(isset($country['name']['common']))
-                $newCountry->commonName = $country['name']['common'];
-
-            if(isset($country['name']['official']))
-                $newCountry->officialName = $country['name']['official'];
-
-            if(isset($country['capital'][0]))
-                $newCountry->capital = $country['capital'][0];
-            
-            if(isset($country['population']))
-                $newCountry->population = $country['population'];
-
-            if(isset($country['timezones'][0]))
-                $newCountry->timezone = $country['timezones'][0];
-
-            if(isset($country['flags']['png']))
-                $newCountry->flagUrl = $country['flags']['png'];
+            $newCountry->commonName     = $country['name']['common'] ?? NULL;
+            $newCountry->officialName   = $country['name']['official'] ?? NULL;
+            $newCountry->capital        = $country['capital'][0] ?? NULL;
+            $newCountry->population     = $country['population'] ?? NULL;
+            $newCountry->timezone       = $country['timezones'][0] ?? NULL;
+            $newCountry->flagUrl        = $country['flags']['png'] ?? NULL;
             
             if(isset($country['currencies']))
             {
 
-                $currencyCode   = NULL;
-                $arrKeys        = array_keys($country['currencies']);
-                
-                if(isset($arrKeys[0]))
-                    $currencyCode = $arrKeys[0];
+                $arrKeys      = array_keys($country['currencies']);
+                $currencyCode = $arrKeys[0] ?? NULL;
                 
                 $newCountry->currencyCode = $currencyCode;
-
-                if(isset($country['currencies'][$currencyCode]['symbol']))
-                    $newCountry->currencySymbol = $country['currencies'][$currencyCode]['symbol'];
+                $newCountry->currencySymbol = $country['currencies'][$currencyCode]['symbol'] ?? NULL;
             
             }
 
             //TODO: validation 
+
+            //dd($newCountry->getAttributes());
+            dd($newCountry->validate());
 
 
             if(!$newCountry->save()){
