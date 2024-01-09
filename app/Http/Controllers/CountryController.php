@@ -34,13 +34,11 @@ class CountryController extends Controller
        
         //TODO: delete data 
 
-        /*$response = Http::get(Config::get('app.restCountriesUrl'), 
+        $response = Http::get(Config::get('app.restCountriesUrl'), 
             ['fields' =>  'name,capital,currencies,population,timezones,flags']);
-        $arrCountries = $response->json();*/
+        $arrCountries = $response->json();
 
-        $dummyData = '[{"flags":{"png":"https://flagcdn.com/w320/sk.png","svg":"https://flagcdn.com/sk.svg","alt":"The flag of Slovakia is composed of three equal horizontal bands of white, blue and red. The coat of arms of Slovakia is superimposed at the center of the field slightly towards the hoist side."},"name":{"common":"Slovakia","official":"Slovak Republic","nativeName":{"slk":{"official":"Slovenská republika","common":"Slovensko"}}},"currencies":{"EUR":{"name":"Euro","symbol":"€"}},"capital":["Bratislava"],"population":5458827,"timezones":["UTC+01:00"]}]';
-        $arrCountries = json_decode($dummyData,true);
-
+  
         foreach($arrCountries as $country)
         {
 
@@ -65,10 +63,7 @@ class CountryController extends Controller
             }
 
             //TODO: validation 
-
-            //dd($newCountry->getAttributes());
-            dd($newCountry->validate());
-
+            $newCountry->validate();
 
             if(!$newCountry->save()){
                 //TODO: log this
