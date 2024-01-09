@@ -33,7 +33,7 @@ class CountryController extends Controller
     {
        
         $response = Http::get(Config::get('app.restCountriesUrl'), 
-        ['fields' =>  'name,capital,currencies,population,timezones,flags']);
+            ['fields' =>  'name,capital,currencies,population,timezones,flags']);
         $arrCountries = $response->json();
 
         foreach($arrCountries as $country)

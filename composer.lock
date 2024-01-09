@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "04667de44913e2c1bc4de60fd5fa0d04",
+    "content-hash": "667358da69210d921d6c6a37c671f93d",
     "packages": [
         {
             "name": "brick/math",
@@ -5442,6 +5442,46 @@
                 }
             ],
             "time": "2023-12-28T19:16:56+00:00"
+        },
+        {
+            "name": "theriddleofenigma/laravel-model-validation",
+            "version": "v1.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/theriddleofenigma/laravel-model-validation.git",
+                "reference": "6cf919ee59ac311f20a977f29f401f741c323912"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/theriddleofenigma/laravel-model-validation/zipball/6cf919ee59ac311f20a977f29f401f741c323912",
+                "reference": "6cf919ee59ac311f20a977f29f401f741c323912",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "^5.0|^6.20.26|^7.0|^8.0|^9.0|^10.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Enigma\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kumaravel",
+                    "email": "kumarwindows11@gmail.com"
+                }
+            ],
+            "description": "Model validation for Laravel application.",
+            "support": {
+                "issues": "https://github.com/theriddleofenigma/laravel-model-validation/issues",
+                "source": "https://github.com/theriddleofenigma/laravel-model-validation/tree/v1.4.0"
+            },
+            "time": "2023-09-16T13:21:50+00:00"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",
