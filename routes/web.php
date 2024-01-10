@@ -15,11 +15,9 @@ use App\Http\Controllers\CurrencyController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 
+Route::get('/', [CountryController::class, 'index']);
 Route::get('/countries', [CountryController::class, 'index'])->name('countries');
 Route::get('/country/{id}', [ CountryController::class, 'view'])->name('country');
 Route::get('/countries/fetch', [CountryController::class, 'fetch']);

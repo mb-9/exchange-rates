@@ -20,7 +20,7 @@
     <div class="container">
         <div class="row justify-content-center mt-3">
        
-        <div class="col">
+        <div class="col-sm-6">
             <h2> Country details </h2>
             <table class="table table-bordered mt-3">
                
@@ -56,7 +56,7 @@
            </table>
 
         </div>
-        <div class="col">
+        <div class="col-sm-6">
             <h2>Euro foreign exchange reference rates</h2>
             <table class="table table-bordered mt-3">
                 <thead>
