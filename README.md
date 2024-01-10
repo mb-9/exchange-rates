@@ -19,8 +19,7 @@ $ composer install
 
 Database
 --------
-
-Set up connection string in .env and run 
+Create database and set up connection string in .env, then run 
 
 ```bash
 php artisan migrate
@@ -29,7 +28,7 @@ php artisan migrate
 Scheduling
 --------
 
-There are two tasks that are scheduled every day
+There are two tasks that are scheduled to run every day
 
 - downloading countries
 - downloading exchange rates 
