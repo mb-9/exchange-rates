@@ -191,6 +191,14 @@ return [
     |--------------------------------------------------------------------------
     |
     */
-    'restCountriesUrl'      => 'https://restcountries.com/v3.1/all'
+    'restCountriesUrl'      => 'https://restcountries.com/v3.1/all',
+
+     /*
+    |--------------------------------------------------------------------------
+    | Currencies
+    |--------------------------------------------------------------------------
+    |
+    */
+    'referenceRatesUrl'      => 'https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml'
 
 ];

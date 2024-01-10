@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\CountryController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CountryController;
+use App\Http\Controllers\CurrencyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,3 +23,4 @@ Route::get('/', function () {
 Route::get('/countries', [CountryController::class, 'index']);
 Route::get('/country/view', [CountryController::class, 'view']);
 Route::get('/countries/fetch', [CountryController::class, 'fetch']);
+Route::get('/currencies/fetch', [CurrencyController::class, 'fetch']);
