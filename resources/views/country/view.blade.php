@@ -71,7 +71,7 @@
                     @foreach($rates as $rate)
                     <tr>
                         <td>{{ $rate->date }}</td>
-                        <td>{{ $rate->rateDecimal() }} {{ $rate->currency }}</td>
+                        <td>{{ $rate->rateFormatted() }} {{ $rate->currency }}</td>
                     </tr>
                     @endforeach
 

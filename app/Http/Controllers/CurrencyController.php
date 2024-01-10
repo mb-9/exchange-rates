@@ -34,7 +34,7 @@ class CurrencyController extends Controller
                 
                 $newCurrency = new Currency();
                 $newCurrency->currency = $currencyElement['@attributes']['currency'] ?? NULL;
-                $newCurrency->rate     = (int) 100000 * $currencyElement['@attributes']['rate'] ?? NULL;
+                $newCurrency->rate     = $currencyElement['@attributes']['rate'] ?? NULL;
                 $newCurrency->date     = $date;
                 
              

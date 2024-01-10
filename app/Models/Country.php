@@ -23,19 +23,6 @@ class Country extends Model
         'currencySymbol'    => 'string',
     ];
 
-
-    public $validationAttributes = [
-        'commonName'        => 'Názov',
-        'officialName'      => 'Oficiálny názov',
-        'capital'           => 'Hlavné mesto',
-        'population'        => 'Počet obyvateľov',
-        'timezone'          => 'Časová zóna',
-        'flagUrl'           => 'Vlajka',
-        'currencyCode'      => 'Kód meny',
-        'currencySymbol'    => 'Symbol meny',
-    ];
-
-    
     /**
      * Validates the model
      *
