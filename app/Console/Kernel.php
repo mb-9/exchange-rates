@@ -18,6 +18,10 @@ class Kernel extends ConsoleKernel
                  ->name('fetch-countries')
                  ->daily();
 
+        $schedule->call('App\Http\Controllers\CurrencyController@fetch')
+                 ->name('fetch-currencies')
+                 ->daily();
+
     }
 
     /**
