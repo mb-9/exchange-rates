@@ -21,6 +21,6 @@ Route::get('/', function () {
 
 
 Route::get('/countries', [CountryController::class, 'index']);
-Route::get('/country/view', [CountryController::class, 'view']);
+Route::get('/country/{id}', [CountryController::class, 'view']);
 Route::get('/countries/fetch', [CountryController::class, 'fetch']);
 Route::get('/currencies/fetch', [CurrencyController::class, 'fetch']);

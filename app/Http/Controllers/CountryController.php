@@ -25,9 +25,12 @@ class CountryController extends Controller
      /**
      * Show detail of a country
      */
-    public function view(): View
+    public function view($id): View
     {
+        $country = Country::findOrFail($id);
+
         return view('country.view', [
+            'country' => $country
         ]);
     }
 
