@@ -24,9 +24,9 @@
                     @foreach($countries as $country)
                     <tr>
                         <td>{{ $country->id }}</td>
-                        <td>{{ $country->commonName }}</td>
+                        <td><a href="{{ route('country', $country->id) }}">{{ $country->commonName }}</a></td>
                         <td><img src='{{$country->flagUrl}}' width="40px"></td>
-                        <td></td>
+                        <td><a href="{{ route('country', $country->id) }}" class="btn btn-primary">Detail</a></td>
                     </tr>
                     @endforeach
                 </tbody>

@@ -19,42 +19,66 @@
 
     <div class="container">
         <div class="row justify-content-center mt-3">
-        <table class="table table-bordered mt-5">
+       
+        <div class="col">
+            <table class="table table-bordered mt-5">
                
+               <tbody>
+                   <tr>
+                       <td><b>No.</b></td>
+                       <td>{{ $country->id }}</td>
+                   </tr>
+                   <tr>
+                       <td><b>Common name</b></td>
+                       <td>{{ $country->commonName }}</td>
+                   </tr>
+                   <tr>
+                       <td><b>Official name</b></td>
+                       <td>{{ $country->officialName }}</td>
+                   </tr>
+                   <tr>
+                       <td><b>Capital</b></td>
+                       <td>{{ $country->capital }}</td>
+                   </tr>
+                   <tr>
+                       <td><b>Population</b></td>
+                       <td>{{ $country->population }}</td>
+                   </tr>
+                   <tr>
+                       <td><b>Timezone</b></td>
+                       <td>{{ $country->timezone }}</td>
+                   </tr>
+                   <tr>
+                       <td><b>Flag</b></td>
+                       <td><img src='{{$country->flagUrl}}' width="100px"></td>
+                   </tr>
+ 
+                   </tr>
+               </tbody>
+           </table>
+
+        </div>
+        <div class="col">
+            <table class="table table-bordered mt-5">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Rate</th>
+                    </tr>
+                </thead>
                 <tbody>
+                    @foreach($rates as $rate)
                     <tr>
-                        <td><b>No.</b></td>
-                        <td>{{ $country->id }}</td>
+                        <td>{{ $rate->date }}</td>
+                        <td>{{ $rate->rateDecimal() }} {{ $rate->currency }}</td>
+                       
                     </tr>
-                    <tr>
-                        <td><b>Common name</b></td>
-                        <td>{{ $country->commonName }}</td>
-                    </tr>
-                    <tr>
-                        <td><b>Official name</b></td>
-                        <td>{{ $country->officialName }}</td>
-                    </tr>
-                    <tr>
-                        <td><b>Capital</b></td>
-                        <td>{{ $country->capital }}</td>
-                    </tr>
-                    <tr>
-                        <td><b>Population</b></td>
-                        <td>{{ $country->population }}</td>
-                    </tr>
-                    <tr>
-                        <td><b>Timezone</b></td>
-                        <td>{{ $country->timezone }}</td>
-                    </tr>
-                    <tr>
-                        <td><b>Flag</b></td>
-                        <td><img src='{{$country->flagUrl}}' width="100px"></td>
-                    </tr>
-  
-                    </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
+        </div>
+
     </div>
 
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Country;
+use App\Models\Currency;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -28,9 +29,12 @@ class CountryController extends Controller
     public function view($id): View
     {
         $country = Country::findOrFail($id);
+        
+        $rates   = Currency::where('currency', $country->currencyCode)->get();
 
         return view('country.view', [
-            'country' => $country
+            'country'       => $country, 
+            'rates'         => $rates 
         ]);
     }
 

@@ -15,6 +15,11 @@ class Currency extends Model
         'rate'      => 'required|integer',
     ];
 
+
+    public function rateDecimal(){
+        return $this->rate/100000;
+    } 
+
     /**
      * Validates the model
      *
