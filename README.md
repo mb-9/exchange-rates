@@ -12,7 +12,7 @@ Installation
 
 ```bash
 # clone the code repository and install its dependencies
-$ git clone https://github.com/mb-9/exchage-rates.git my_project
+$ git clone https://github.com/mb-9/exchange-rates.git my_project
 $ cd my_project/
 $ composer install
 ```
