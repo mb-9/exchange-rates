@@ -55,7 +55,7 @@ class CountryController extends Controller
                 }
 
                 if(!$newCountry->save()){
-                    Log::error("Could not save a country".$country->officialName."to database");
+                    Log::error("Could not save a country ".$country->officialName." to database");
                     continue;
                 } 
             }

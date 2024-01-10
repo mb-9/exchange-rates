@@ -42,7 +42,8 @@ class Country extends Model
      * @return array array of error messages if the validation was not successful 
      * @return bool true if validation has been successful 
      */
-    public function validate() : array|bool{
+    public function validate() : array|bool
+    {
 
         $validator  = Validator::make($this->getAttributes(), $this->validationRules);
        
@@ -51,7 +52,6 @@ class Country extends Model
         }
 
         return true;
-
     }
 
     
@@ -61,7 +61,8 @@ class Country extends Model
      * @param  array $country
      * @return void
      */
-    public function fillAttributesFromApiResult(array $country) : void{
+    public function fillAttributesFromApiResult(array $country) : void 
+    {
 
         $this->commonName     = $country['name']['common'] ?? NULL;
         $this->officialName   = $country['name']['official'] ?? NULL;
