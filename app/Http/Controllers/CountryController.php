@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Country;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Config;
 
@@ -31,44 +33,37 @@ class CountryController extends Controller
 
     public function fetch() 
     {
-       
-        //TODO: delete data 
+        DB::beginTransaction();
+        try {
 
-        $response = Http::get(Config::get('app.restCountriesUrl'), 
-            ['fields' =>  'name,capital,currencies,population,timezones,flags']);
-        $arrCountries = $response->json();
+            DB::table('countries')->truncate();
 
-  
-        foreach($arrCountries as $country)
-        {
+            $response = Http::get(Config::get('app.restCountriesUrl'), 
+                ['fields' =>  'name,capital,currencies,population,timezones,flags']);
 
-            $newCountry = new Country();
+            $arrCountries = $response->json();
 
-            $newCountry->commonName     = $country['name']['common'] ?? NULL;
-            $newCountry->officialName   = $country['name']['official'] ?? NULL;
-            $newCountry->capital        = $country['capital'][0] ?? NULL;
-            $newCountry->population     = $country['population'] ?? NULL;
-            $newCountry->timezone       = $country['timezones'][0] ?? NULL;
-            $newCountry->flagUrl        = $country['flags']['png'] ?? NULL;
-            
-            if(isset($country['currencies']))
+            foreach($arrCountries as $country)
             {
-
-                $arrKeys      = array_keys($country['currencies']);
-                $currencyCode = $arrKeys[0] ?? NULL;
                 
-                $newCountry->currencyCode = $currencyCode;
-                $newCountry->currencySymbol = $country['currencies'][$currencyCode]['symbol'] ?? NULL;
-            
+                $newCountry = new Country();
+                $newCountry->fillAttributesFromApiResult($country);
+
+                if(!$result = $newCountry->validate()){
+                    Log::error(json_encode($result));
+                    continue;
+                }
+
+                if(!$newCountry->save()){
+                    Log::error("Could not save a country".$country->officialName."to database");
+                    continue;
+                } 
             }
 
-            //TODO: validation 
-            $newCountry->validate();
-
-            if(!$newCountry->save()){
-                //TODO: log this
-            }
-            
+            DB::commit();
+        } catch (\Exception $e){
+            Log::error("Exception:". $e->getMessage());
+            DB::rollback();
         }
 
     }
