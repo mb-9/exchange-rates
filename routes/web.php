@@ -20,7 +20,7 @@ Route::get('/', function () {
 });
 
 
-Route::get('/countries', [CountryController::class, 'index']);
-Route::get('/country/{id}', [ CountryController::class, 'view'])->name('country');;
+Route::get('/countries', [CountryController::class, 'index'])->name('countries');
+Route::get('/country/{id}', [ CountryController::class, 'view'])->name('country');
 Route::get('/countries/fetch', [CountryController::class, 'fetch']);
 Route::get('/currencies/fetch', [CurrencyController::class, 'fetch']);

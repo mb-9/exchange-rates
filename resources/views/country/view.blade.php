@@ -21,13 +21,11 @@
         <div class="row justify-content-center mt-3">
        
         <div class="col">
-            <table class="table table-bordered mt-5">
+            <h2> Country details </h2>
+            <table class="table table-bordered mt-3">
                
                <tbody>
-                   <tr>
-                       <td><b>No.</b></td>
-                       <td>{{ $country->id }}</td>
-                   </tr>
+                
                    <tr>
                        <td><b>Common name</b></td>
                        <td>{{ $country->commonName }}</td>
@@ -59,7 +57,8 @@
 
         </div>
         <div class="col">
-            <table class="table table-bordered mt-5">
+            <h2>Euro foreign exchange reference rates</h2>
+            <table class="table table-bordered mt-3">
                 <thead>
                     <tr>
                         <th>Date</th>
@@ -67,19 +66,31 @@
                     </tr>
                 </thead>
                 <tbody>
+                   
+
                     @foreach($rates as $rate)
                     <tr>
                         <td>{{ $rate->date }}</td>
                         <td>{{ $rate->rateDecimal() }} {{ $rate->currency }}</td>
-                       
                     </tr>
                     @endforeach
+
+                   
                 </tbody>
             </table>
-        </div>
-        </div>
 
+            @if (count($rates) == 0)
+                         No data available 
+            @else
+            @endif
+           
+        </div>
+        
+       
+        </div>
+        <a href="{{ route('countries') }}" class="btn btn-primary">Back</a>
     </div>
+
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
