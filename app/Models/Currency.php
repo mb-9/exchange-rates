@@ -20,13 +20,11 @@ class Currency extends Model
     ];
 
 
-    /**
-     * Returns decimal
-     */
-    public function rateDecimal(){
-        return $this->rate/100000;
-    }
 
+    /**
+     * Used in frontent
+     * @return string
+     */
     public function rateFormatted(){
         return rtrim($this->rate, '0');
     }
