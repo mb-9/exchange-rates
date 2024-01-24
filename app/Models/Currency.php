@@ -19,6 +19,18 @@ class Currency extends Model
         'rate'      => 'required|numeric',
     ];
 
+
+    /**
+     * Returns decimal
+     */
+    public function rateDecimal(){
+        return $this->rate/100000;
+    }
+
+    public function rateFormatted(){
+        return rtrim($this->rate, '0');
+    }
+
     /**
      * Validates the model
      *
